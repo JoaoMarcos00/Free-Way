@@ -1,0 +1,38 @@
+const btnLogin = document.querySelector(".btn-login");
+const loginPopup = document.querySelector(".login-popup");
+const closeModalBtn = document.querySelector(".close");
+const emailInput = document.getElementById("email");
+const senhaInput = document.getElementById("senha");
+const errorMessage = document.querySelector(".error-message");
+
+// Abrir o popup quando o usuário clica no botão de login
+btnLogin.addEventListener("click", () => {
+loginPopup.classList.add("show-popup");
+});
+
+// Fechar o popup quando o usuário clica no botão "x"
+closeModalBtn.addEventListener("click", () => {
+loginPopup.classList.remove("show-popup");
+});
+
+// Fechar o popup quando o usuário clica fora da janela
+window.addEventListener("click", (event) => {
+if (event.target == loginPopup) {
+loginPopup.classList.remove("show-popup");
+}
+});
+
+// Verificar o formulário de login quando o usuário tenta entrar
+const loginForm = document.querySelector("form");
+loginForm.addEventListener("submit", (event) => {
+// Verificar se os campos de e-mail e senha foram preenchidos
+if (!emailInput.value || !senhaInput.value) {
+event.preventDefault();
+// Mostrar mensagem de erro
+errorMessage.innerHTML = "Por favor, preencha todos os campos.";
+errorMessage.style.display = "block";
+} else {
+// Implementar aqui a validação do formulário e o envio dos dados para o servidor
+// ...
+}
+});
